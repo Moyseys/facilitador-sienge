@@ -1,0 +1,16 @@
+{
+  "name": "facilitador-sienge",
+  "version": "1.0.0",
+  "description": "Adicionar informações de E-mail, Telefone e Endereço em credores que não possuem essas informações cadastradas.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
