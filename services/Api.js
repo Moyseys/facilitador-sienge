@@ -51,4 +51,23 @@ export default class Api {
             console.error(error);
         }
     }    
+
+    async updateCreditorNumber(creditorId, contactId, data) {
+        try {
+            const header = new Headers()
+            const auth = btoa(`${this.user}:${this.key}`)
+            header.set("Authorization", `Basic ${auth}`)
+
+            const response = await fetch(`${this.url}/creditors/${creditorId}/contact/${contactId}`, {
+                method: 'PATCH',
+                header,
+                body: JSON.stringify(data)
+            });
+            const responseJson = await response.json();
+            console.log(responseJson)
+        } catch (error) {
+            console.error(`ERRO DE UPDATE: ${error.message}`)
+            throw error;
+        }
+    }
 }

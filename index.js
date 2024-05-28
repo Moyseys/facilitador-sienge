@@ -1,6 +1,7 @@
 import Api from './services/Api.js'
 import File from './services/File.js'
 import CSV from './services/Csv.js';
+import CreditorProcessor from './services/CreditorProcessor.js'
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -13,16 +14,21 @@ const api = new Api(url, key, user);
 const csv = new CSV('cadastro credores.csv');
 const file = new File()
 
-// api.getCreditor('', '', '', 10).then(async (result) => {
-//     console.log(result)
-//     const data =  JSON.stringify(result)
-//     file.writeFile('teste.json', data)
-// });
+api.updateCreditorNumber(5277, 19, {
 
-csv.readRow(1002).then((result) => {
-    console.log(result);
+    "phoneDdd": "48",
+    "phoneNumber": "944445555",
+    "email": "cafeYcultor@gmail.com"
 
-   
-}).catch((error) => {
-    console.error('Error reading row:', error);
+  }).then(async (result) => {
+    console.log(result)
 });
+
+
+// csv.readRow(1).then((result) => {
+//     console.log(result);
+
+
+// }).catch((error) => {
+//     console.error('Error reading row:', error);
+// });
