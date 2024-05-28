@@ -1,6 +1,7 @@
 import Api from './services/Api.js'
 import File from './services/File.js'
 import CSV from './services/Csv.js';
+import CreditorProcessor from './services/CreditorProcessor.js'
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -13,11 +14,7 @@ const api = new Api(url, key, user);
 const csv = new CSV('cadastro credores TRUE.csv');
 const file = new File()
 
-// api.getCreditor('', '', '', 10).then(async (result) => {
-//     console.log(result)
-//     const data =  JSON.stringify(result)
-//     file.writeFile('teste.json', data)
-// });
+api.updateCreditorNumber(5277, 19, {
 
 // async function findAndFixCreditors(){
 //     let nextCreditor = await csv.findNextCreditor()
