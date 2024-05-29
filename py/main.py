@@ -1,6 +1,9 @@
 from  services.buscaCredor import buscarCredor
+import time
+
+time.sleep(3)
 #BUSCAR CREDOR POR RAZÃO SOCIAL
-buscarCredor("oi")
+buscarCredor("SOFTPLAN")
 #APERTAR NO BOTAO CONSULTAR
 
 #ESPERAR 2 SEGUNDOS
