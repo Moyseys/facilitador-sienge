@@ -14,8 +14,6 @@ const api = new Api(url, key, user);
 const csv = new CSV('cadastro credores TRUE.csv');
 const file = new File()
 
-api.updateCreditorNumber(5277, 19, {
-
 // async function findAndFixCreditors(){
 //     let nextCreditor = await csv.findNextCreditor()
     
@@ -36,6 +34,6 @@ api.updateCreditorNumber(5277, 19, {
 // }
 
 
-csv.editCell('credores.csv', 1, 'CORRIGIDO', 'TRUE')
+csv.editCell(2, 'CORRIGIDO', 'TRUE')
     .then(() => console.log('Cell updated successfully'))
     .catch(err => console.error('Error updating cell:', err));

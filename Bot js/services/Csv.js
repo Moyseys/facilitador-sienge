@@ -80,34 +80,53 @@ export default class CSV {
         }
     }
 
-    editCell(row, colunm, newValue){
+    editCell(row, column, newValue) {
         return new Promise((resolve, reject) => {
-            let records = []
-            let header = []
+            let records = [];
+            let header = [];
+            let countRow = 1;
+            
             const readStream = fs.createReadStream(this.filePath)
                 .pipe(csv())
-                .on('data', (row) => {
-                    console.log(row);
-                    header = Object.keys(row)
-                    records.push(row)
+                .on('data', (dataRow) => {
+                    if (countRow === 1) {
+                        header = Object.keys(dataRow);
+                    }
+    
+                    const rowData = Object.values(dataRow);
+    
+                    if (countRow === row) {
+                        rowData[header.indexOf(column)] = newValue;
+                    }
+    
+                    const record = header.reduce((acc, key, index) => {
+                        acc[key] = rowData[index];
+                        return acc;
+                    }, {});
+    
+                    records.push(record);
+                    countRow++;
                 })
                 .on('end', () => {
                     const csvWriter = createObjectCsvWriter({
-                        path: 'path/to/file.csv',
-                        header: header.map((vl) => {
-                            return {
-                                id: vl,
-                                title: vl
-                            }
-                        })
+                        path: 'creditors.csv',
+                        header: header.map(col => ({ id: col, title: col }))
                     });
-                    //console.log(header);
-                    // csvWriter.writeRecords(records)
-                    // console.log('CSV file successfully processed');
+    
+                    csvWriter.writeRecords(records)
+                        .then(() => {
+                            console.log('CSV file successfully processed');
+                            resolve();
+                        })
+                        .catch(err => {
+                            console.error('Error writing CSV file', err);
+                            reject(err);
+                        });
                 })
                 .on('error', (err) => {
                     console.error('Pipeline failed.', err);
+                    reject(err);
                 });
-        })
+        });
     }
 }
