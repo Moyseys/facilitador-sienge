@@ -1,9 +1,6 @@
-import pyautogui
-import time
-
-
-#BUSCAR  CREDOR POR RAZÃO SOCIAL
-
+from  services.buscaCredor import buscarCredor
+#BUSCAR CREDOR POR RAZÃO SOCIAL
+buscarCredor("oi")
 #APERTAR NO BOTAO CONSULTAR
 
 #ESPERAR 2 SEGUNDOS
