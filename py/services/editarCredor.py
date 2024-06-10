@@ -1,3 +1,4 @@
+import time
 import pyautogui
 import os
 from .localizarEClicar import localizar_e_clicar
@@ -27,3 +28,4 @@ def editarCredor(nome, numero, email):
 
     btn_salvar = os.path.join(base_path, 'btnSalvar.png')
     localizar_e_clicar(btn_salvar, "btnSalvar")
+    pyautogui.press("f5")
