@@ -13,15 +13,16 @@ def editarCredor(nome, numero, email):
 
     icon_btn_adicionar = os.path.join(base_path, 'bntAdicionar.png')
     localizar_e_clicar(icon_btn_adicionar, "icon_btn_adicionar")
-
+    
     pyautogui.write(nome)
-    pyautogui.press("tab")
-    pyautogui.press("tab")
-    pyautogui.write(numero)
 
     icon_input_checkbox = os.path.join(base_path, 'inputCheckBoxAmarelo.png')
     localizar_e_clicar(icon_input_checkbox, "icon_input_checkbox")
-
+    
+    pyautogui.hotkey("shift", "tab")
+    pyautogui.write(numero)
+ 
+    pyautogui.press("tab")
     pyautogui.press("tab")
     pyautogui.press("tab")
     pyautogui.write(email)

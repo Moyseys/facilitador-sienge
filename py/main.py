@@ -14,8 +14,8 @@ sheet_name = 'Total credores'
 # valor = get_cell_value(file_path, sheet_name, "F", 2)
 # print(valor)
 
-time.sleep(3)
-for i in range(2, 101):
+time.sleep(1)
+for i in range(4, 7):
     #Verefica se credor já foi atualizado
     esta_atualizado = get_cell_value(sheet, sheet_name, "F", i)
     if(esta_atualizado == "TRUE"):
@@ -32,8 +32,8 @@ for i in range(2, 101):
     numero = get_cell_value(sheet, sheet_name, "D", i)
     email = get_cell_value(sheet, sheet_name, "E", i)
 
-    if(numero is not None and email is not None):
-        resposta = input(f"O credor {razao_social_atual} não possui informações de contato validas, deseja continuar? (S/N): ")
+    if(numero is None or email is None):
+        resposta = input(f"O credor {razao_social} não possui informações de contato validas, deseja continuar? (S/N): ")
         if resposta.upper() != "S":
             print("Bot encerrado!")
             break
@@ -41,8 +41,11 @@ for i in range(2, 101):
             time.sleep(5)
 
     #Atualiza credor
+    print(razao_social)
     buscarCredor(razao_social)
-    #Atualiza Tabela
+    # #Atualiza Tabela
+    print(f"Número? {numero}")
+    print(f"E-mail? {email}")
     editarCredor("Contato 1", numero, email)
 
     edit_cell(sheet, sheet_name, "F", i, "TRUE")
