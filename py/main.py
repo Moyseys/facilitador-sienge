@@ -9,7 +9,7 @@ time.sleep(3)
 #CLICAR NO LAPIS PARA EDICAO DO CREDOR
 #ESPERAR 2 SEGUNDOS
 
-buscarCredor("SOFTPLAN")
+#buscarCredor("SOFTPLAN")
 
 #CLICAR NA ABA CONTATOS
 #SCROLLA A TELA
@@ -21,7 +21,7 @@ buscarCredor("SOFTPLAN")
 #ADICIONA TELEFONE
 #CLICA NO INPUT EMAIL
 #ADICIONA EMAIL
-editarCredor(19971436845, "joao.silva@gmail.com")
+editarCredor("Contato 1", "19971436845", "joao.silva@gmail.com")
 
 
 
