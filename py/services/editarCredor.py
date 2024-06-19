@@ -16,16 +16,24 @@ def editarCredor(nome, numero, email):
     
     pyautogui.write(nome)
 
+    pyautogui.press("tab")
+    pyautogui.press("tab")
+    pyautogui.press("tab")
+
     icon_input_checkbox = os.path.join(base_path, 'inputCheckBoxAmarelo.png')
-    localizar_e_clicar(icon_input_checkbox, "icon_input_checkbox")
+    localizacao = pyautogui.locateCenterOnScreen(icon_input_checkbox, confidence=0.9)
+    pyautogui.click(localizacao)
+    print(f"inputCheckBoxAmarelo localizado e clicado.")
     
     pyautogui.hotkey("shift", "tab")
-    pyautogui.write(numero)
+    if numero is not None:
+        pyautogui.write(numero)
  
-    pyautogui.press("tab")
-    pyautogui.press("tab")
-    pyautogui.press("tab")
-    pyautogui.write(email)
+    if email is not None:
+        pyautogui.press("tab")
+        pyautogui.press("tab")
+        pyautogui.press("tab")
+        pyautogui.write(email)
 
     btn_salvar = os.path.join(base_path, 'btnSalvar.png')
     localizar_e_clicar(btn_salvar, "btnSalvar")

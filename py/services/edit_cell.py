@@ -2,6 +2,7 @@ import pandas as pd
 from openpyxl import load_workbook
 
 def edit_cell(file_path, sheet_name, col, row, new_value):
+    print(f"Atualizando célula...jlmarangoni@netpage.com.br")
     # Abre o arquivo Excel
     workbook = load_workbook(filename=file_path)
     

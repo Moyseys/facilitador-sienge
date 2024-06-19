@@ -1,19 +1,16 @@
-import requests
-import json 
-from requests.structures import CaseInsensitiveDict
+import os
+import time
+import pyautogui
+import pyperclip
 
-def getCnpj(cnpj):
-    url = f"https://publica.cnpj.ws/cnpj/{cnpj}"
-    resp = requests.get(url)
-    try:
-        # Tenta converter a resposta para um objeto JSON
-        data = resp.json()
-        
-        # Salvando o JSON em um arquivo
-        with open('dados.json', 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=4)
-        
-        print("Dados salvos em dados.json")
-    except ValueError:
-        print("A resposta não está em formato JSON")
-
+def getCnpj():
+    base_dir = os.path.join(os.getcwd(), 'py', 'static', 'icons').replace('\\', '/')
+    icon_cnpj = os.path.join(base_dir, "iconCnpj.png")
+    pyautogui.moveTo(icon_cnpj)
+    time.sleep(1)
+    pyautogui.moveRel(70, 0)
+    pyautogui.click()
+    pyautogui.hotkey('ctrl', 'a')
+    pyautogui.hotkey('ctrl', 'c')
+    cnpj_value = pyperclip.paste()
+    return cnpj_value
